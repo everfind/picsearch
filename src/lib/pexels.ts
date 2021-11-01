@@ -1,11 +1,9 @@
 import axios from 'axios';
 
-axios.interceptors.request.use(function (config) {
-    if (!config.headers) {
-        config.headers = {};
-    }
-    config.headers['Authorization'] = '563492ad6f91700001000001ee73ec26350b4a91aa701684cd9cf496';
-    return config;
+const instance = axios.create({
+    headers: {
+        Authorization: '563492ad6f91700001000001ee73ec26350b4a91aa701684cd9cf496',
+    },
 });
 
 // https://www.pexels.com/zh-cn/api/documentation/
@@ -45,7 +43,7 @@ export interface SearchReturn {
 }
 
 export function search(params: SearchParams): Promise<SearchReturn> {
-    return axios
+    return instance
         .get<SearchReturn>('https://api.pexels.com/v1/search/', {
             params: {
                 ...params,
@@ -59,7 +57,7 @@ export function search(params: SearchParams): Promise<SearchReturn> {
 }
 
 export function curated(params: { page: number; per_page: number }) {
-    return axios
+    return instance
         .get<SearchReturn>('https://api.pexels.com/v1/search/', {
             params,
         })
