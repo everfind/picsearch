@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/picture-list/index.css"],"names":[],"mappings":"AAAA,mBACI,UAAW,CACX,kBAAmB,CACnB,QAAS,CACT,eACJ","file":"4.3e4b17a2.chunk.css","sourcesContent":[".pictureList::after {\n    content: '';\n    flex-grow: 99999999;\n    height: 0;\n    min-width: 200px;\n}\n"]}
