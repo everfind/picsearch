@@ -1,4 +1,11 @@
 import axios from 'axios';
+import { Picture } from '../../types';
+
+const instance = axios.create({
+    params: {
+        key: '24009231-e8e4fd260a26521d059640a40',
+    },
+});
 
 // https://pixabay.com/api/docs/
 export interface SearchParams {
@@ -51,17 +58,20 @@ export interface SearchReturn {
     hits: Photo[];
 }
 
-export function search(params: SearchParams): Promise<SearchReturn> {
-    return axios
+function mapPhotoToPicture(photo: Photo): Picture {
+    return { id: photo.id, width: photo.imageWidth, height: photo.imageHeight, pageUrl: photo.pageURL, imageUrl: photo.largeImageURL };
+}
+
+export function searchPicture(params: SearchParams): Promise<Picture[]> {
+    return instance
         .get<SearchReturn>('https://pixabay.com/api/', {
             params: {
-                key: '24009231-e8e4fd260a26521d059640a40',
                 ...params,
-                q: encodeURIComponent(params.q),
+                query: encodeURIComponent(params.q),
             },
         })
-        .then(({ data }) => data)
-        .catch(() => {
-            return { total: 0, totalHits: 0, hits: [] };
-        });
+        .then((resp) => {
+            return resp.data.hits.map(mapPhotoToPicture);
+        })
+        .catch((e) => []);
 }
