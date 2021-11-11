@@ -7,14 +7,14 @@ import { SearchPictures } from './pages/search';
 import 'lazysizes';
 
 export default function App() {
-    const { q: keyword } = qs.parse(window.location.search.substring(1));
+  const { q: keyword } = qs.parse(window.location.search.substring(1));
 
-    return (
-        <div className={cls('w-screen', 'h-screen', 'bg-gray-100', 'overflow-y-auto')}>
-            <div className={cls('flex', 'flex-row', 'justify-center', 'p-4')}>
-                <Search query={keyword as string} />
-            </div>
-            {!keyword ? <CuratedPictures /> : <SearchPictures keyword={keyword as string} />}
-        </div>
-    );
+  return (
+    <div className={cls('w-screen', 'h-screen', 'bg-gray-100')}>
+      <div className={cls('flex', 'flex-row', 'justify-center', 'p-4')}>
+        <Search query={keyword as string} />
+      </div>
+      {!keyword ? <CuratedPictures /> : <SearchPictures keyword={keyword as string} />}
+    </div>
+  );
 }

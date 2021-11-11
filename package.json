@@ -24,9 +24,10 @@
   },
   "scripts": {
     "start": "craco start",
+    "prebuild": "rm -rf build",
     "build": "craco build",
     "test": "craco test",
-    "deploy": "gh-pages -d build"
+    "deploy": "yarn build && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
