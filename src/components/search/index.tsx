@@ -10,7 +10,7 @@ export const Search = function ({ className, query }: { className?: string; quer
     }
   }, []);
   return (
-    <div className={cls('w-2/4', 'h-14', 'rounded-lg', 'bg-white', 'overflow-hidden', className)}>
+    <div className={cls('w-2/4', 'h-10', 'rounded-lg', 'bg-white', 'border', 'overflow-hidden', className)}>
       <input defaultValue={query} className={cls('w-full', 'h-full', 'p-3', 'outline-none', 'text-lg')} placeholder='搜索免费图片' onKeyDown={onKeyDown} />
     </div>
   );

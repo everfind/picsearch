@@ -1,7 +1,6 @@
 import React from 'react';
 import cls from 'clsx';
 import { Picture } from '../../types';
-import './index.css';
 
 export function PictureList({ pictureList }: { pictureList: Picture[] }) {
   return (
@@ -26,7 +25,7 @@ export function PictureList({ pictureList }: { pictureList: Picture[] }) {
             rel='noreferrer'
           >
             <i className={cls('block')} style={{ paddingBottom: `${(1 / rate) * 100}%` }}></i>
-            <img className={cls('absolute', 'w-full', 'h-full', 'top-0', 'align-bottom', 'border-0', 'lazyload')} data-src={pic.imageUrl} alt='' />
+            <img className={cls('absolute', 'w-full', 'h-full', 'top-0', 'align-bottom', 'border', 'lazyload')} data-src={pic.imageUrl} alt='' />
           </a>
         );
       })}

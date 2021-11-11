@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.search {
+  background-color: #232a34;
+}
+
+.content::before {
+  content: '';
+  display: table;
+  clear: both;
+}

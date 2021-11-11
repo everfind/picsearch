@@ -8,7 +8,7 @@ import { isInViewPort } from '../../utils';
 import { useRef } from 'react';
 import { useCallback } from 'react';
 
-export function SearchPictures({ keyword }: { keyword: string }) {
+export function SearchPictures({ keyword, className }: { keyword: string; className?: string }) {
   const [pictures, fetchMore] = useSearchPictures(keyword);
   const loadMoreRef = useRef<HTMLDivElement>(null);
   const onScroll = useCallback(() => {
@@ -23,10 +23,10 @@ export function SearchPictures({ keyword }: { keyword: string }) {
     };
   }, [onScroll]);
   return (
-    <>
+    <div className={cls(className)}>
       <p className={cls('m-2', 'text-gray-600', { visible: !!keyword, invisible: !keyword })}>您查找的关于“{keyword}”的图片：</p>
       <PictureList pictureList={pictures} />
       {!!pictures.length && <Loading ref={loadMoreRef} />}
-    </>
+    </div>
   );
 }
